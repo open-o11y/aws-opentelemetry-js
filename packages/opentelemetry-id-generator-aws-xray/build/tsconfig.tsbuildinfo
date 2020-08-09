@@ -811,19 +811,14 @@
         "signature": "8063cbf8f5716a4886f483d349608634cc12adf797548d2fcb1804fe571e5d1f",
         "affectsGlobalScope": false
       },
-      "../src/platform/node/randomidgenerator.ts": {
-        "version": "f5822e0ddaadece742fb914a17b0ebb440c5b2662287bbfda1a56566288ad1d7",
-        "signature": "c799310b674649b03eb7149ea1f58ff829a9df53b6112a9ce96dbaa67b11882d",
-        "affectsGlobalScope": false
-      },
       "../src/platform/node/awsxrayidgenerator.ts": {
         "version": "8ed414e13fc8db1027be3d6c75e63301cf96ba5bb2343ca935b5ac4fcb35800f",
         "signature": "da1099aff2f9326cf310d420a6de2af1948f9c11d06a7ca1cb8876fdffb7d753",
         "affectsGlobalScope": false
       },
       "../src/platform/node/index.ts": {
-        "version": "2a571664fe81914470288af7726e7d61b26e852eb0873066a1bba3529b73ffd6",
-        "signature": "c8036b2c65056fcb824dbdaeb2e39b9b8aaea1c54e32a247a3082a12acd01021",
+        "version": "44a2db993ef9f6eaf4289543b10999a93ff19fc32f80f78d4e9565e2149d1678",
+        "signature": "43f8c6d16795ff68acc498c5568ec19ee246d303bc001d3638e575adaa15b493",
         "affectsGlobalScope": false
       },
       "../src/platform/index.ts": {
@@ -846,24 +841,14 @@
         "signature": "2ee0b33f1dfbdf3bf1040432b5d8af3d72d530a6a4873259525a36467d3d77d5",
         "affectsGlobalScope": false
       },
-      "../src/platform/browser/randomidgenerator.ts": {
-        "version": "caf7bb48756bb3092befb67bc992f09e3ade15048e8721db046048cfb7ce2a62",
-        "signature": "adc4104bcbad4fd8127db5bd0687a3eda8b7c165c35d081d05f84a923d164e0f",
-        "affectsGlobalScope": false
-      },
       "../src/platform/browser/index.ts": {
-        "version": "2a571664fe81914470288af7726e7d61b26e852eb0873066a1bba3529b73ffd6",
-        "signature": "c8036b2c65056fcb824dbdaeb2e39b9b8aaea1c54e32a247a3082a12acd01021",
+        "version": "44a2db993ef9f6eaf4289543b10999a93ff19fc32f80f78d4e9565e2149d1678",
+        "signature": "43f8c6d16795ff68acc498c5568ec19ee246d303bc001d3638e575adaa15b493",
         "affectsGlobalScope": false
       },
       "../test/platform/awsxrayidgenerator.test.ts": {
         "version": "bc22b0ed46fb1ec278125627f517e43d9fae36f7cac362af6f7e9ff10bccf94a",
         "signature": "c60b45a7d7dc1fd9c7c3ec06520ec9f651fa3b2eebab5047872c5b8b9b3661a4",
-        "affectsGlobalScope": false
-      },
-      "../test/platform/randomidgenerator.test.ts": {
-        "version": "fc53787602653ca702f6284b7cb36411df0b0fc67f3ec5c670e056d5870c7b59",
-        "signature": "45c1174a272710b9a39c66cd7496fb14ed67ca3f92d1870408888b7ebe2081c2",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/color-name/index.d.ts": {
@@ -2304,15 +2289,7 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/platform/browser/awsxrayidgenerator.ts",
-        "../src/platform/browser/randomidgenerator.ts"
-      ],
-      "../src/platform/browser/randomidgenerator.ts": [
-        "../node_modules/@opentelemetry/core/build/src/index.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts"
+        "../src/platform/browser/awsxrayidgenerator.ts"
       ],
       "../src/platform/index.ts": [
         "../node_modules/@types/node/fs.d.ts",
@@ -2334,16 +2311,7 @@
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/platform/node/awsxrayidgenerator.ts",
-        "../src/platform/node/randomidgenerator.ts"
-      ],
-      "../src/platform/node/randomidgenerator.ts": [
-        "../node_modules/@opentelemetry/core/build/src/index.d.ts",
-        "../node_modules/@types/node/crypto.d.ts",
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/util.d.ts"
+        "../src/platform/node/awsxrayidgenerator.ts"
       ],
       "../src/version.ts": [
         "../node_modules/@types/node/fs.d.ts",
@@ -2352,14 +2320,6 @@
         "../node_modules/@types/node/util.d.ts"
       ],
       "../test/platform/awsxrayidgenerator.test.ts": [
-        "../node_modules/@types/node/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/fs.d.ts",
-        "../node_modules/@types/node/ts3.2/util.d.ts",
-        "../node_modules/@types/node/ts3.7/assert.d.ts",
-        "../node_modules/@types/node/util.d.ts",
-        "../src/platform/index.ts"
-      ],
-      "../test/platform/randomidgenerator.test.ts": [
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
@@ -3706,11 +3666,7 @@
         "../node_modules/@opentelemetry/core/build/src/index.d.ts"
       ],
       "../src/platform/browser/index.ts": [
-        "../src/platform/browser/awsxrayidgenerator.ts",
-        "../src/platform/browser/randomidgenerator.ts"
-      ],
-      "../src/platform/browser/randomidgenerator.ts": [
-        "../node_modules/@opentelemetry/core/build/src/index.d.ts"
+        "../src/platform/browser/awsxrayidgenerator.ts"
       ],
       "../src/platform/index.ts": [
         "../src/platform/node/index.ts"
@@ -3719,11 +3675,7 @@
         "../node_modules/@opentelemetry/core/build/src/index.d.ts"
       ],
       "../src/platform/node/index.ts": [
-        "../src/platform/node/awsxrayidgenerator.ts",
-        "../src/platform/node/randomidgenerator.ts"
-      ],
-      "../src/platform/node/randomidgenerator.ts": [
-        "../node_modules/@opentelemetry/core/build/src/index.d.ts"
+        "../src/platform/node/awsxrayidgenerator.ts"
       ]
     },
     "semanticDiagnosticsPerFile": [
@@ -3905,14 +3857,11 @@
       "../src/index.ts",
       "../src/platform/browser/awsxrayidgenerator.ts",
       "../src/platform/browser/index.ts",
-      "../src/platform/browser/randomidgenerator.ts",
       "../src/platform/index.ts",
       "../src/platform/node/awsxrayidgenerator.ts",
       "../src/platform/node/index.ts",
-      "../src/platform/node/randomidgenerator.ts",
       "../src/version.ts",
-      "../test/platform/awsxrayidgenerator.test.ts",
-      "../test/platform/randomidgenerator.test.ts"
+      "../test/platform/awsxrayidgenerator.test.ts"
     ]
   },
   "version": "3.9.6"
