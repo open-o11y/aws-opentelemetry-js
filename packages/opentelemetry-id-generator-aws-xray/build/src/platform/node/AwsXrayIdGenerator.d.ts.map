@@ -1,0 +1,1 @@
+{"version":3,"file":"AwsXrayIdGenerator.d.ts","sourceRoot":"","sources":["../../../../src/platform/node/AwsXrayIdGenerator.ts"],"names":[],"mappings":"AAiBA,OAAO,EAAE,WAAW,EAAE,MAAM,qBAAqB,CAAC;AAMlD;;GAEG;AACH,qBAAa,kBAAmB,YAAW,WAAW;IACpD;;;;OAIG;IACH,eAAe,IAAI,MAAM;IAOzB;;;OAGG;IACH,cAAc,IAAI,MAAM;CAGzB"}
