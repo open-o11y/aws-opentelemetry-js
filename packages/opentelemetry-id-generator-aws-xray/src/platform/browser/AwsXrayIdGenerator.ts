@@ -35,8 +35,7 @@ export class AwsXrayIdGenerator implements IdGenerator {
    * time, in seconds, as per X-Ray trace ID format.
    */
   generateTraceId(): string {
-    const date = new Date();
-    const nowSec = Math.floor(date.getTime() / 1000).toString(16);
+    const nowSec = Math.floor(Date.now() / 1000).toString(16);
     cryptoLib.getRandomValues(randomBytesArray);
     return (
       nowSec +
