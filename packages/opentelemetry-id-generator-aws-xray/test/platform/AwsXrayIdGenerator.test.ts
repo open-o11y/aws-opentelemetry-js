@@ -26,7 +26,6 @@ describe('AWSXrayTraceId', () => {
     traceId1 = idGenerator.generateTraceId();
     currTime = parseInt(traceId1.substring(0, 8), 16);
     nextTime = Math.floor(Date.now() / 1000);
-    console.log(traceId1.length);
     traceId2 = idGenerator.generateTraceId();
   });
 
