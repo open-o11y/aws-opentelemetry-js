@@ -61,7 +61,7 @@ const VALID_SPANID_REGEX = /^[0-9a-f]{16}$/i;
  * An example AWS Xray Tracing Header is shown below:
  * X-Amzn-Trace-Id: Root=1-5759e988-bd862e3fe1be46a994272793;Parent=53995c3f42cd8ad8;Sampled=1
  */
-export class AWSXRayPropagator implements HttpTextPropagator {
+export class AwsXRayPropagator implements HttpTextPropagator {
   inject(context: Context, carrier: unknown, setter: SetterFunction) {
     const spanContext = getParentSpanContext(context);
     if (!spanContext || !isValid(spanContext)) return;

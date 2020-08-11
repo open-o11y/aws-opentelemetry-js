@@ -24,7 +24,7 @@ const TIME_BYTES = 4;
 /** IdGenerator that generates trace IDs conforming to AWS X-Ray format.
  * https://docs.aws.amazon.com/xray/latest/devguide/xray-api-sendingdata.html#xray-api-traceids
  */
-export class AwsXrayIdGenerator implements IdGenerator {
+export class AwsXRayIdGenerator implements IdGenerator {
   /**
    * Returns a random 16-byte trace ID formatted/encoded as a 32 lowercase hex
    * characters corresponding to 128 bits. The first 4 bytes correspond to the current

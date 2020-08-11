@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 import * as assert from 'assert';
-import { AwsXrayIdGenerator } from '../../src/platform';
+import { AwsXRayIdGenerator } from '../../src/platform';
 
-const idGenerator = new AwsXrayIdGenerator();
+const idGenerator = new AwsXRayIdGenerator();
 
 describe('AWSXrayTraceId', () => {
   let traceId1: string, traceId2: string;
