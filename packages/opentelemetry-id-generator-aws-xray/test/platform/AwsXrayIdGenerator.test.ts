@@ -18,7 +18,7 @@ import { AwsXRayIdGenerator } from '../../src/platform';
 
 const idGenerator = new AwsXRayIdGenerator();
 
-describe('AWSXrayTraceId', () => {
+describe('AwsXRayTraceId', () => {
   let traceId1: string, traceId2: string;
   let prevTime: number, currTime: number, nextTime: number;
   beforeEach(() => {
@@ -44,7 +44,7 @@ describe('AWSXrayTraceId', () => {
   });
 });
 
-describe('AWSXraySpanId', () => {
+describe('AwsXRaySpanId', () => {
   let spanId1: string, spanId2: string;
   beforeEach(() => {
     spanId1 = idGenerator.generateSpanId();

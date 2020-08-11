@@ -33,7 +33,7 @@ import {
   AWSXRAY_TRACE_ID_HEADER,
 } from '../src/AwsXRayPropagator';
 
-describe('AWSXRayPropagator', () => {
+describe('AwsXRayPropagator', () => {
   const xrayPropagator = new AwsXRayPropagator();
   const TRACE_ID = '8a3c60f7d188f8fa79d48a391a778fa6';
   const SPAN_ID = '53995c3f42cd8ad8';
