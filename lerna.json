@@ -2,13 +2,11 @@
   "lerna": "3.13.4",
   "npmClient": "npm",
   "packages": [
-    "benchmark/*",
-    "metapackages/*",
     "packages/*"
   ],
   "version": "0.10.2",
   "changelog": {
-    "repo": "open-telemetry/opentelemetry-js",
+    "repo": " open-o11y/aws-opentelemetry-js ",
     "labels": {
       "breaking": ":boom: Breaking Change",
       "enhancement": ":rocket: (Enhancement)",
