@@ -1,7 +1,7 @@
 {
-  "name": "opentelemetry-base",
+  "name": "aws-opentelemetry-js",
   "version": "0.10.2",
-  "description": "OpenTelemetry is a distributed tracing and stats collection framework.",
+  "description": "Host AWS X-Ray vendor-specific components for OTel-JS-SDK auto-instrumentation.",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "scripts": {
@@ -34,8 +34,10 @@
     "opentelemetry",
     "nodejs",
     "profiling",
-    "metrics",
-    "stats"
+    "trace",
+    "AWS",
+    "X-Ray",
+    "awsxray"
   ],
   "author": "OpenTelemetry Authors",
   "license": "Apache-2.0",
