@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import * as crypto from 'crypto';
 import { IdGenerator } from '@opentelemetry/core';
 
 const SPAN_ID_BYTES = 8;
@@ -30,18 +29,34 @@ export class AwsXRayIdGenerator implements IdGenerator {
    * characters corresponding to 128 bits. The first 4 bytes correspond to the current
    * time, in seconds, as per X-Ray trace ID format.
    */
-  generateTraceId(): string {
-    const nowSec = Math.floor(Date.now() / 1000).toString(16);
-    return (
-      nowSec + crypto.randomBytes(TRACE_ID_BYTES - TIME_BYTES).toString('hex')
-    );
-  }
+  generateTraceId = getIdGenerator(true, TRACE_ID_BYTES - TIME_BYTES);
 
   /**
    * Returns a random 8-byte span ID formatted/encoded as a 16 lowercase hex
    * characters corresponding to 64 bits.
    */
-  generateSpanId(): string {
-    return crypto.randomBytes(SPAN_ID_BYTES).toString('hex');
-  }
+  generateSpanId = getIdGenerator(false, SPAN_ID_BYTES);
+}
+
+const SHARED_BUFFER = Buffer.allocUnsafe(TRACE_ID_BYTES);
+function getIdGenerator(timeUsage: boolean, bytes: number): () => string {
+  return function generateId() {
+    for (let i = 0; i < bytes / 4; i++) {
+      // unsigned right shift drops decimal part of the number
+      // it is required because if a number between 2**32 and 2**32 - 1 is generated, an out of range error is thrown by writeUInt32BE
+      SHARED_BUFFER.writeUInt32BE((Math.random() * 2 ** 32) >>> 0, i * 4);
+    }
+
+    // If buffer is all 0, set the last byte to 1 to guarantee a valid w3c id is generated
+    for (let i = 0; i < bytes; i++) {
+      if (SHARED_BUFFER[i] > 0) {
+        break;
+      } else if (i === bytes - 1) {
+        SHARED_BUFFER[bytes - 1] = 1;
+      }
+    }
+
+    const nowSec = timeUsage ? Math.floor(Date.now() / 1000).toString(16) : '';
+    return nowSec + SHARED_BUFFER.toString('hex', 0, bytes);
+  };
 }
