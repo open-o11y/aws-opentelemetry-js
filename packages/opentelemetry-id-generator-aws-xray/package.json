@@ -2,10 +2,9 @@
   "name": "@opentelemetry/id-generator-aws-xray",
   "version": "0.10.1",
   "description": "AWS X-Ray ID generator for OpenTelemetry",
-  "main": ".eslintrc.js",
-  "directories": {
-    "test": "test"
-  },
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "repository": "aws-opentelemetry-js/opentelemetry-id-generator-aws-xray",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
