@@ -1,38 +1,27 @@
 'use strict';
 
-const tracer = require('./tracer')('example-grpc-client');
+const tracer = require('./tracer')('example-http-client');
 // eslint-disable-next-line import/order
-const grpc = require('grpc');
-const messages = require('./helloworld_pb');
-const services = require('./helloworld_grpc_pb');
-
-const PORT = 50051;
+const http = require('http');
 
 /** A function which makes requests and handles response. */
-function main() {
+function makeRequest() {
   // span corresponds to outgoing requests. Here, we have manually created
   // the span, which is created to track work that happens outside of the
   // request lifecycle entirely.
-  const span = tracer.startSpan('client.js:main()');
+  const span = tracer.startSpan('makeRequest');
   tracer.withSpan(span, () => {
-    console.log('Client traceId ', span.context().traceId);
-    const client = new services.GreeterClient(
-      `localhost:${PORT}`,
-      grpc.credentials.createInsecure(),
-    );
-    const request = new messages.HelloRequest();
-    let user;
-    if (process.argv.length >= 3) {
-      // eslint-disable-next-line prefer-destructuring
-      user = process.argv[2];
-    } else {
-      user = 'world';
-    }
-    request.setName(user);
-    client.sayHello(request, (err, response) => {
-      span.end();
-      if (err) throw err;
-      console.log('Greeting:', response.getMessage());
+    http.get({
+      host: 'localhost',
+      port: 8080,
+      path: '/helloworld',
+    }, (response) => {
+      const body = [];
+      response.on('data', (chunk) => body.push(chunk));
+      response.on('end', () => {
+        console.log(body.toString());
+        span.end();
+      });
     });
   });
 
@@ -43,4 +32,4 @@ function main() {
   setTimeout(() => { console.log('Completed.'); }, 5000);
 }
 
-main();
+makeRequest();

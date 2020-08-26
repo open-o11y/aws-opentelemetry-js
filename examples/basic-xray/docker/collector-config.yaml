@@ -9,13 +9,15 @@ receivers:
           -https://*
 exporters:
   logging:
-    loglevel: info
+    loglevel: debug
   awsxray:
     local_mode: true
+    # role_arn: arn:aws:iam::640946111646:user/CongZou
   zipkin:
     endpoint: "http://zipkin-server:9411/api/v2/spans"
-  # jaeger:
-  #   endpoint: jaeger-server:14250
+  jaeger:
+    endpoint: jaeger-server:14250
+    insecure: true 
 service:
   pipelines:
     traces:
@@ -25,4 +27,4 @@ service:
       - logging
       - awsxray
       - zipkin
-      # - jaeger
+      - jaeger

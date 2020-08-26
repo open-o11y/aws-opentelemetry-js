@@ -1,38 +1,50 @@
 'use strict';
 
-const tracer = require('./tracer')(('example-grpc-server'));
+const tracer = require('./tracer')('example-http-server');
 // eslint-disable-next-line import/order
-const grpc = require('grpc');
+const http = require('http');
 
-const messages = require('./helloworld_pb');
-const services = require('./helloworld_grpc_pb');
-
-const PORT = 50051;
-
-/** Starts a gRPC server that receives requests on sample server port. */
-function startServer() {
+/** Starts a HTTP server that receives requests on sample server port. */
+function startServer(port) {
   // Creates a server
-  const server = new grpc.Server();
-  server.addService(services.GreeterService, { sayHello });
-  server.bind(`0.0.0.0:${PORT}`, grpc.ServerCredentials.createInsecure());
-  console.log(`binding server on 0.0.0.0:${PORT}`);
-  server.start();
+  const server = http.createServer(handleRequest);
+  // Starts the server
+  server.listen(port, (err) => {
+    if (err) {
+      throw err;
+    }
+    console.log(`Node HTTP listening on ${port}`);
+  });
 }
 
-function sayHello(call, callback) {
+/** A function which handles requests and send response. */
+function handleRequest(request, response) {
   const currentSpan = tracer.getCurrentSpan();
   // display traceid in the terminal
   console.log(`traceid: ${currentSpan.context().traceId}`);
-  const span = tracer.startSpan('server.js:sayHello()', {
+  const span = tracer.startSpan('handleRequest', {
     parent: currentSpan,
     kind: 1, // server
     attributes: { key: 'value' },
   });
-  span.addEvent(`invoking sayHello() to ${call.request.getName()}`);
-  const reply = new messages.HelloReply();
-  reply.setMessage(`Hello ${call.request.getName()}`);
-  callback(null, reply);
-  span.end();
+  // Annotate our span to capture metadata about the operation
+  span.addEvent('invoking handleRequest');
+  try {
+    const body = [];
+    console.log(JSON.stringify(request.headers));
+    request.on('error', (err) => console.log(err));
+    request.on('data', (chunk) => body.push(chunk));
+    request.on('end', () => {
+      // deliberately sleeping to mock some action.
+      setTimeout(() => {
+        span.end();
+        response.end('Hello World!');
+      }, 2000);
+    });
+  } catch (err) {
+    console.error(err);
+    span.end();
+  }
 }
 
-startServer();
+startServer(8080);
