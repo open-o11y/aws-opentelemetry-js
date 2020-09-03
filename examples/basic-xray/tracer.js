@@ -4,12 +4,12 @@ const { BasicTracerProvider, SimpleSpanProcessor, ConsoleSpanExporter } = requir
 const { NodeTracerProvider } = require('@opentelemetry/node');
 const { context, propagation, trace } = require("@opentelemetry/api");
 const { CollectorTraceExporter, CollectorProtocolNode } = require('@opentelemetry/exporter-collector');
-const { detectResources } = require('@opentelemetry/resources');
-// const { HttpTraceContextTemp } = require('httptracecontexttemp');
-const { HttpTraceContext } = require('@opentelemetry/core');
-const { awsEc2Detector } = require('@opentelemetry/resource-detector-aws');
+const { detectResources } = require('@opentelemetry/resources/build/src/platform/node/detect-resources');
+const { awsEc2Detector } = require('@opentelemetry/resource-detector-aws-demo');
 const { AwsXRayPropagator } = require('@aws-observability/propagator-aws-xray');
-const { AwsXRayIdGenerator } = require('@aws-observability/id-generator-aws-xray'); 
+const { AwsXRayIdGenerator } = require('@aws-observability/id-generator-aws-xray');
+
+const { gcpDetector } = require('@opentelemetry/resource-detector-gcp');
 
 module.exports = (serviceName) => {
   // set global propagator
@@ -20,12 +20,17 @@ module.exports = (serviceName) => {
   const detectorConfig = {
     detectors: [
       // awsEcsDetector,
-      awsEc2Detector,
+      // awsEc2Detector,
       // awsBeanstalkDetector
     ]
   };
-  const resources = detectResources(detectorConfig);
-  console.log(JSON.stringify(resources));
+  var resources;
+  detectResources(detectorConfig)
+    .then((res) => {
+      resources = res;
+      console.log("detected resource: " + JSON.stringify(resources));
+    })
+    .catch((e) => {console.log(e);});
 
   // create a provider for activating and tracking with AWS IdGenerator
   const tracerConfig = {

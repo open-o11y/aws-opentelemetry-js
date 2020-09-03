@@ -9,10 +9,11 @@ receivers:
           -https://*
 exporters:
   logging:
-    loglevel: debug
+    loglevel: info
   awsxray:
     local_mode: true
     # role_arn: arn:aws:iam::640946111646:user/CongZou
+    region: us-east-2
   zipkin:
     endpoint: "http://zipkin-server:9411/api/v2/spans"
   jaeger:

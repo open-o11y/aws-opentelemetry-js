@@ -31,7 +31,6 @@ function handleRequest(request, response) {
   span.addEvent('invoking handleRequest');
   try {
     const body = [];
-    console.log(JSON.stringify(request.headers));
     request.on('error', (err) => console.log(err));
     request.on('data', (chunk) => body.push(chunk));
     request.on('end', () => {

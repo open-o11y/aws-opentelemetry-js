@@ -19,13 +19,12 @@ services:
       - "1338:1338"
       
   collector:
-    #build:
-    #  context: ../opentelemetry-collector-contrib
+    # build:
+    #  context: ../../../../opentelemetry-collector-contrib
     #  dockerfile: examples/tracing/Dockerfile
     image: otel/opentelemetry-collector-contrib-dev
-    command: --config /config/collector-config.yaml
+    command: --config /config/collector-config.yaml --log-level DEBUG
     environment:
-      - AWS_PROFILE=default
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
       - AWS_REGION
