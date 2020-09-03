@@ -63,10 +63,14 @@ const VALID_SPANID_REGEX = /^[0-9a-f]{16}$/i;
  */
 export class AwsXRayPropagator implements HttpTextPropagator {
   inject(context: Context, carrier: unknown, setter: SetterFunction) {
+    console.log('context(inject): ' + JSON.stringify(context));
     const spanContext = getParentSpanContext(context);
+    console.log('spanContext(inject): ' + JSON.stringify(spanContext));
     if (!spanContext || !isValid(spanContext)) return;
 
     const otTraceId = spanContext.traceId;
+    console.log('inject traceId: ' + otTraceId);
+
     const xrayTraceId =
       TRACE_ID_VERSION +
       TRACE_ID_DELIMITER +
@@ -89,12 +93,16 @@ export class AwsXRayPropagator implements HttpTextPropagator {
       SAMPLED_FLAG_KEY +
       KV_DELIMITER +
       samplingFlag;
+    console.log('inject traceHeader: ' + traceHeader);
 
     setter(carrier, AWSXRAY_TRACE_ID_HEADER, traceHeader);
+    console.log('carrier(inject): ' + JSON.stringify(carrier));
   }
 
   extract(context: Context, carrier: unknown, getter: GetterFunction): Context {
+    console.log('context(extract): ' + JSON.stringify(context));
     const spanContext = this.getSpanContextFromHeader(carrier, getter);
+    console.log('spanContext(extract): ' + JSON.stringify(spanContext));
     if (!isValid(spanContext)) return context;
 
     return setExtractedSpanContext(context, spanContext);
@@ -104,7 +112,11 @@ export class AwsXRayPropagator implements HttpTextPropagator {
     carrier: unknown,
     getter: GetterFunction
   ): SpanContext {
-    const traceHeader = getter(carrier, AWSXRAY_TRACE_ID_HEADER);
+    const traceHeader = getter(carrier, AWSXRAY_TRACE_ID_HEADER)
+      ? getter(carrier, AWSXRAY_TRACE_ID_HEADER)
+      : getter(carrier, AWSXRAY_TRACE_ID_HEADER.toLowerCase());
+    console.log('carrier(extract): ' + JSON.stringify(carrier));
+    console.log('traceHeader(extract): ' + traceHeader);
     // Only if the returned traceHeader is no empty string can be extracted
     if (!traceHeader || typeof traceHeader !== 'string')
       return INVALID_SPAN_CONTEXT;
@@ -138,6 +150,9 @@ export class AwsXRayPropagator implements HttpTextPropagator {
         parsedTraceFlags = this._parseTraceFlag(value);
       }
     }
+    console.log('parsedTraceId(extract): ' + parsedTraceId);
+    console.log('parsedSpanId(extract): ' + parsedSpanId);
+    console.log('parsedTraceFlags(extract): ' + parsedTraceFlags);
     if (parsedTraceFlags === null) {
       return INVALID_SPAN_CONTEXT;
     }

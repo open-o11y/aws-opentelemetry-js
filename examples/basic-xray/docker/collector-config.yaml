@@ -1,0 +1,31 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:55680
+      http:
+        cors_allowed_origins:
+          -http://*
+          -https://*
+exporters:
+  logging:
+    loglevel: info
+  awsxray:
+    local_mode: true
+    # role_arn: arn:aws:iam::640946111646:user/CongZou
+    region: us-east-2
+  zipkin:
+    endpoint: "http://zipkin-server:9411/api/v2/spans"
+  jaeger:
+    endpoint: jaeger-server:14250
+    insecure: true 
+service:
+  pipelines:
+    traces:
+      receivers:
+      - otlp
+      exporters:
+      - logging
+      - awsxray
+      - zipkin
+      - jaeger
