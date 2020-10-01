@@ -56,6 +56,5 @@ The `opentelemetry-js` project is written in TypeScript.
 - `npm run lint` lint any changes.
 
 
-
 Note that the `opentelemetry-resource-detector-demo` package is only for demo purpose.
 
