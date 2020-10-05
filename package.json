@@ -1,5 +1,5 @@
 {
-  "name": "aws-opentelemetry-js",
+  "name": "aws-otel-js",
   "version": "0.10.2",
   "description": "Host AWS X-Ray vendor-specific components for OTel-JS-SDK auto-instrumentation.",
   "main": "build/src/index.js",
@@ -13,7 +13,7 @@
     "compile": "lerna run compile",
     "test": "lerna run test",
     "test:browser": "lerna run test:browser",
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --no-ci --hoist --concurrency=1",
     "bump": "lerna publish",
     "codecov": "lerna run codecov",
     "codecov:browser": "lerna run codecov:browser",
@@ -29,7 +29,7 @@
     "lint:markdown": "./node_modules/.bin/markdownlint $(git ls-files '*.md') -i ./CHANGELOG.md",
     "lint:markdown:fix": "./node_modules/.bin/markdownlint $(git ls-files '*.md') -i ./CHANGELOG.md --fix"
   },
-  "repository": "open-o11y/aws-opentelemetry-js",
+  "repository": "aws-observability/aws-otel-js",
   "keywords": [
     "opentelemetry",
     "nodejs",
