@@ -51,4 +51,8 @@ fs.readdir(appRoot, (err, files) => {
     });
   });
 
-fs.writeFile(fileUrl, content.replace(/\n/g, os.EOL));
+fs.writeFile(fileUrl, content.replace(/\n/g, os.EOL), function(err) {
+  if (err) {
+      console.log(err);
+  }
+});
