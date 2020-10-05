@@ -45,7 +45,7 @@ export const VERSION = '${pjson.version}';
 
 const fileUrl = path.join(appRoot, "src", "version.ts")
 
-fs.readdir(appRoot + "/src", (err, files) => {
+fs.readdir(appRoot, (err, files) => {
     files.forEach(file => {
       console.log(file);
     });
