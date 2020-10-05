@@ -33,13 +33,6 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "files": [
-    "build/src/**/*.js",
-    "build/src/**/*.d.ts",
-    "doc",
-    "LICENSE",
-    "README.md"
-  ],
   "publishConfig": {
     "access": "public"
   },
