@@ -16,9 +16,6 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "precompile": "tsc --version",
-    "compile": "npm run version:update && tsc -p .",
-    "version:update": "node ../../scripts/version-update.js",
-    "prepare": "npm run compile",
     "watch": "tsc -w"
   },
   "keywords": [
