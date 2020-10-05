@@ -18,7 +18,6 @@
     "precompile": "tsc --version",
     "compile": "npm run version:update && tsc -p .",
     "prepare": "npm run compile",
-    "version:update": "node ../../scripts/version-update.js",
     "watch": "tsc -w"
   },
   "keywords": [
