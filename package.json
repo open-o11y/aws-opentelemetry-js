@@ -31,7 +31,7 @@
     "lint:markdown": "./node_modules/.bin/markdownlint $(git ls-files '*.md') -i ./CHANGELOG.md",
     "lint:markdown:fix": "./node_modules/.bin/markdownlint $(git ls-files '*.md') -i ./CHANGELOG.md --fix"
   },
-  "repository": "aws-observability/aws-otel-js",
+  "repository": "open-o11y/aws-opentelemetry-js",
   "keywords": [
     "opentelemetry",
     "nodejs",
