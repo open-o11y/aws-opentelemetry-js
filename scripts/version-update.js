@@ -45,4 +45,6 @@ export const VERSION = '${pjson.version}';
 
 const fileUrl = path.join(appRoot, "src", "version.ts")
 
-fs.writeFile(fileUrl, content.replace(/\n/g, os.EOL), { flag: 'wx' });
+fs.writeFile(fileUrl, content.replace(/\n/g, os.EOL), { flag: 'wx' }, function(err) {
+    if (err) throw err;
+});
