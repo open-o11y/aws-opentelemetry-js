@@ -1,5 +1,5 @@
 {
-  "name": "aws-otel-js",
+  "name": "aws-opentelemetry-js",
   "version": "0.10.2",
   "description": "Host AWS X-Ray vendor-specific components for OTel-JS-SDK auto-instrumentation.",
   "main": "build/src/index.js",
@@ -13,8 +13,7 @@
     "compile": "lerna run compile",
     "test": "lerna run test",
     "test:browser": "lerna run test:browser",
-    "install": "npm i lerna",
-    "prepare": "npm i -g lerna-link-dep",
+    "install": "npm i lerna && npm i -g lerna-link-dep",
     "bootstrap": "lerna bootstrap --hoist",
     "bump": "lerna publish",
     "codecov": "lerna run codecov",
