@@ -51,4 +51,4 @@ fs.readdir(appRoot, (err, files) => {
     });
   });
 
-fs.writeFileSync(fileUrl, content.replace(/\n/g, os.EOL));
+fs.writeFile(fileUrl, content.replace(/\n/g, os.EOL));
