@@ -13,6 +13,7 @@
     "compile": "lerna run compile",
     "test": "lerna run test",
     "test:browser": "lerna run test:browser",
+    "install": "npm install -g lerna-link-dep",
     "bootstrap": "lerna bootstrap --hoist",
     "bump": "lerna publish",
     "codecov": "lerna run codecov",
