@@ -14,7 +14,7 @@
     "test": "lerna run test",
     "test:browser": "lerna run test:browser",
     "install": "npm i -D lerna && npm i -g lerna-link-dep",
-    "bootstrap": "lerna bootstrap --hoist",
+    "bootstrap": "lerna bootstrap",
     "bump": "lerna publish",
     "codecov": "lerna run codecov",
     "codecov:browser": "lerna run codecov:browser",
