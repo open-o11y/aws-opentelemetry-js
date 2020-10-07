@@ -16,16 +16,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Bump the version in all package.json
-        run: npx lerna publish --skip-npm --no-git-tag-version --no-push
+        run: npx lerna version ${{ github.events.inputs.version }}
       - name: Bootstrap dependencies
         run: npm run bootstrap
-      - name: Add and Commit
-      - uses: EndBug/add-and-commit@v5
-        with:
-          message: 'chore: ${{ github.events.inputs.version }}'
-          tag: '${{ github.events.inputs.version }} --force'
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Push
         uses: ad-m/github-push-action@master
         with:
