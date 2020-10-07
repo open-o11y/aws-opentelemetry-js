@@ -1,5 +1,5 @@
 on:
-  release:
+  workflow_dispatch:
     inputs:
       version:
         description: The version to tag the release with, e.g., 1.2.0, 1.2.1-alpha.1
@@ -8,10 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
         with:
           node-version: '14.x'
 
@@ -21,7 +21,8 @@ jobs:
         run: npx lerna publish --skip-npm --no-git-tag-version --no-push
       - name: Bootstrap dependencies
         run: npm run bootstrap
-      - uses: EndBug/add-and-commit@v5
+      - name: Add and Commit
+        uses: EndBug/add-and-commit@v5
         with:
           message: "chore: ${{ github.events.inputs.version }}"
           tag: "${{ github.events.inputs.version }} --force"
