@@ -1,10 +1,9 @@
 on:
-  workflow_dispatch:
+  release:
     inputs:
       version:
-        description: The version to tag the release with, e.g., 1.2.0, 1.2.1-alpha.1
+        description: 'The version to tag the release with, e.g., 1.2.0, 1.2.1-alpha.1'
         required: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -13,8 +12,7 @@ jobs:
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
-
+          node-version: 14.x
       - name: Install Dependencies
         run: npm install
       - name: Bump the version in all package.json
@@ -22,24 +20,23 @@ jobs:
       - name: Bootstrap dependencies
         run: npm run bootstrap
       - name: Add and Commit
-        uses: EndBug/add-and-commit@v5
+      - uses: EndBug/add-and-commit@v5
         with:
-          message: "chore: ${{ github.events.inputs.version }}"
-          tag: "${{ github.events.inputs.version }} --force"
+          message: 'chore: ${{ github.events.inputs.version }}'
+          tag: '${{ github.events.inputs.version }} --force'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - name: Push
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-
+          github_token: '${{ secrets.GITHUB_TOKEN }}'
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
         with:
-          tag_name: v${{ github.event.inputs.version }}
-          release_name: Release v${{ github.event.inputs.version }}
+          tag_name: 'v${{ github.event.inputs.version }}'
+          release_name: 'Release v${{ github.event.inputs.version }}'
           draft: true
           prerelease: false
