@@ -22,7 +22,7 @@ jobs:
       - name: Add and Commit
         uses: EndBug/add-and-commit@v5
         with:
-          message: 'chore: ${{ github.events.inputs.version }}'
+          message: 'chore: %${{ github.events.inputs.version }}%'
           tag: '${{ github.events.inputs.version }} --force'
         env:
           GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
