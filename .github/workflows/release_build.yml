@@ -1,5 +1,5 @@
 on:
-  release:
+  workflow_dispatch:
     inputs:
       version:
         description: 'The version to tag the release with, e.g., 1.2.0, 1.2.1-alpha.1'
@@ -22,7 +22,7 @@ jobs:
       # - name: Add and Commit
       #   uses: EndBug/add-and-commit@v5
       #   with:
-      #     message: 'chore: %${{ github.events.inputs.version }}%'
+      #     message: 'chore: %{{ github.events.inputs.version }}%'
       #     tag: '${{ github.events.inputs.version }} --force'
       #   env:
       #     GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
@@ -38,5 +38,5 @@ jobs:
         with:
           tag_name: 'v${{ github.event.inputs.version }}'
           release_name: 'Release v${{ github.event.inputs.version }}'
-          draft: true
+          draft: false
           prerelease: false
