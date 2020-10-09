@@ -1,6 +1,6 @@
 {
   "name": "aws-opentelemetry-js",
-  "version": "0.10.2",
+  "version": "0.1.0",
   "description": "Host AWS X-Ray vendor-specific components for OTel-JS-SDK auto-instrumentation.",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
