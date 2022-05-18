@@ -1,5 +1,5 @@
 # aws-opentelemetry-js
-AWS extensions to the OpenTelemetry JavaScript API and SDK. ADOT metrics are in preview for JavaScript/
+AWS extensions to the OpenTelemetry JavaScript API and SDK. ADOT metrics are in preview for JavaScript.
 
 You may find OpenTelemetry [Here](https://github.com/open-telemetry)
 
