@@ -1,5 +1,5 @@
 # aws-opentelemetry-js
-AWS extensions to the OpenTelemetry JavaScript API and SDK
+AWS extensions to the OpenTelemetry JavaScript API and SDK. AWS Distro for OpenTelemetry is in preview for JavaScript metrics.
 
 You may find OpenTelemetry [Here](https://github.com/open-telemetry)
 
@@ -58,4 +58,3 @@ The `opentelemetry-js` project is written in TypeScript.
 
 
 Note that the `opentelemetry-resource-detector-demo` package is only for demo purpose.
-
