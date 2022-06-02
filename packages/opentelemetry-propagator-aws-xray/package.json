@@ -16,9 +16,9 @@
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "precompile": "tsc --version",
+    "version:update": "node ../../scripts/version-update.js",
     "compile": "npm run version:update && tsc -p .",
     "prepare": "npm run compile",
-    "version:update": "node ../../scripts/version-update.js",
     "watch": "tsc -w"
   },
   "keywords": [
@@ -33,13 +33,6 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "files": [
-    "build/src/**/*.js",
-    "build/src/**/*.d.ts",
-    "doc",
-    "LICENSE",
-    "README.md"
-  ],
   "publishConfig": {
     "access": "public"
   },

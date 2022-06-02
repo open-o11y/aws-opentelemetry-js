@@ -29,12 +29,12 @@ import {
 } from '@opentelemetry/core';
 import * as assert from 'assert';
 import {
-  AwsXRayPropagator,
+  AWSXRayPropagator,
   AWSXRAY_TRACE_ID_HEADER,
-} from '../src/AwsXRayPropagator';
+} from '../src/AWSXRayPropagator';
 
-describe('AwsXRayPropagator', () => {
-  const xrayPropagator = new AwsXRayPropagator();
+describe('AWSXRayPropagator', () => {
+  const xrayPropagator = new AWSXRayPropagator();
   const TRACE_ID = '8a3c60f7d188f8fa79d48a391a778fa6';
   const SPAN_ID = '53995c3f42cd8ad8';
   const SAMPLED_TRACE_FLAG = TraceFlags.SAMPLED;

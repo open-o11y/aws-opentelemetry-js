@@ -45,4 +45,14 @@ export const VERSION = '${pjson.version}';
 
 const fileUrl = path.join(appRoot, "src", "version.ts")
 
-fs.writeFileSync(fileUrl, content.replace(/\n/g, os.EOL));
+fs.readdir(appRoot, (err, files) => {
+    files.forEach(file => {
+      console.log(file);
+    });
+  });
+
+fs.writeFile(fileUrl, content.replace(/\n/g, os.EOL), function(err) {
+  if (err) {
+      console.log(err);
+  }
+});
